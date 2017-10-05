@@ -1,0 +1,4 @@
+[05-10-17 13:06:52 Thursday]
+[INFO] : Test Information
+[05-10-17 13:26:59 Thursday]
+[INFO] : Test Information

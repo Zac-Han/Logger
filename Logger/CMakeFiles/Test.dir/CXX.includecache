@@ -1,0 +1,30 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/devel/Work/git/Logger/LoggerTest.cpp
+mylog.h
+/home/devel/Work/git/Logger/mylog.h
+string
+-
+
+/home/devel/Work/git/Logger/mylog.cpp
+mylog.h
+/home/devel/Work/git/Logger/mylog.h
+time.h
+-
+stdexcept
+-
+
+/home/devel/Work/git/Logger/mylog.h
+iostream
+-
+fstream
+-
+string
+-
+

@@ -6,12 +6,8 @@ using namespace std;
 
 int main()
 {
-    MyLog firstlog;
-
-    firstlog.log("Error detected", LogLevel::LevelError);
-    firstlog.log("This is an info", LogLevel::LevelInfo);
-    firstlog.log("This is a Warning", LogLevel::LevelWarning);
-
+    MyLog::instance().log("Test Information", LogLevel::LevelInfo);
+    MyLog::instance().logError("An Error is detected!");
 
     return 0;
 }

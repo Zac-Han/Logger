@@ -12,9 +12,15 @@ const string MyLog::Error = "ERROR";
 const char* MyLog::FileDebug = "Debug.txt";
 const char* MyLog::FileError = "Error.txt";
 
-MyLog::~MyLog()
-{
+MyLog* MyLog::pInstance = nullptr;
 
+MyLog& MyLog::instance()
+{
+    if (pInstance == nullptr)
+    {
+        pInstance = new MyLog();
+    }
+    return *pInstance;
 }
 
 MyLog::MyLog()
@@ -22,10 +28,34 @@ MyLog::MyLog()
 
 }
 
+MyLog::~MyLog()
+{
 
-void MyLog::log(const std::string &LogMessage, LogLevel inLogLevel)
+}
+
+void MyLog::log(const std::string& LogMessage, LogLevel inLogLevel)
 {
     logWriter(LogMessage, inLogLevel);
+}
+
+void MyLog::logVerbose(const std::string& LogMessage)
+{
+    logWriter(LogMessage, LogLevel::LevelVerbose);
+}
+
+void MyLog::logInfo(const std::string& LogMessage)
+{
+    logWriter(LogMessage, LogLevel::LevelInfo);
+}
+
+void MyLog::logWarning(const std::string& LogMessage)
+{
+    logWriter(LogMessage, LogLevel::LevelWarning);
+}
+
+void MyLog::logError(const std::string& LogMessage)
+{
+    logWriter(LogMessage, LogLevel::LevelError);
 }
 
 void MyLog::logWriter(const std::string &LogMessage, LogLevel inLogLevel)
