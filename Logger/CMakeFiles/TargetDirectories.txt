@@ -1,0 +1,3 @@
+/home/devel/Test/Logger/CMakeFiles/edit_cache.dir
+/home/devel/Test/Logger/CMakeFiles/rebuild_cache.dir
+/home/devel/Test/Logger/CMakeFiles/Test.dir
