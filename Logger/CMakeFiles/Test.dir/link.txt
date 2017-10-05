@@ -1,1 +1,0 @@
-/usr/bin/c++      CMakeFiles/Test.dir/LoggerTest.cpp.o CMakeFiles/Test.dir/mylog.cpp.o CMakeFiles/Test.dir/Logger.cpp.o  -o Test -rdynamic 
