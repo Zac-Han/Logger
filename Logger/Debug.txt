@@ -2,3 +2,6 @@
 [INFO] : Test Information
 [05-10-17 13:26:59 Thursday]
 [INFO] : Test Information
+[06-10-17 08:53:46 Friday]
+[INFO] : Test Information
+[06-10-17 15:34:33][INFO] : Test Information

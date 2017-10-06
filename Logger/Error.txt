@@ -1,2 +1,24 @@
-[05-10-17 13:26:59 Thursday]
+[05-10-17 13:26:59] [ERROR] : An Error is detected!
+[06-10-17 08:53:46 Friday]
 [ERROR] : An Error is detected!
+
+
+Dies ist ein text %s , Hallo
+
+
+(char* format, ...)
+{
+
+                char msg[1024];
+                va_list arguments;
+
+                va_start(arguments, format);
+                vsprintf(msg, format, arguments);
+                va_end(arguments);
+
+                fprintf(Logger::_logFile, "%s \n", msg);
+
+                return true;
+
+}
+[06-10-17 15:34:33][ERROR] : An Error is detected!

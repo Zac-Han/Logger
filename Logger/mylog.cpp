@@ -83,8 +83,8 @@ void MyLog::logWriter(const std::string &LogMessage, LogLevel inLogLevel)
 
     time_t t = time(0);
     char tmp[64];
-    strftime(tmp, sizeof(tmp), "%d-%m-%y %X %A", localtime(&t));
-    mOutputstream << "[" << tmp << "]" << endl;
+    strftime(tmp, sizeof(tmp), "%d-%m-%y %X", localtime(&t));
+    mOutputstream << "[" << tmp << "]";
     mOutputstream << "[" << MyLog::LogText << "]" << " : " << LogMessage << endl;
     mOutputstream.close();
 }

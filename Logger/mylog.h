@@ -15,7 +15,6 @@ enum LogLevel
 class MyLog
 {
 public:
-    static const std::string Verbose;
     static const std::string Info;
     static const std::string Warning;
     static const std::string Error;
@@ -23,7 +22,6 @@ public:
 
     static MyLog& instance();
 
-    void logVerbose(const std::string& LogMessage);
     void logInfo(const std::string& LogMessage);
     void logWarning(const std::string& LogMessage);
     void logError(const std::string& LogMessage);
