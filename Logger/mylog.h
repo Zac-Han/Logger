@@ -6,7 +6,6 @@
 
 enum LogLevel
 {
-    LevelVerbose,
     LevelInfo,
     LevelWarning,
     LevelError
@@ -27,13 +26,14 @@ public:
     void logError(const std::string& LogMessage);
 
 
-    void log(const std::string& LogMessage, LogLevel inLogLevel = LogLevel::LevelVerbose);
+    void log(const std::string& LogMessage, LogLevel inLogLevel = LogLevel::LevelInfo);
 
 protected:
     static const char* FileDebug;
     static const char* FileError;
 
-    std::ofstream mOutputstream;
+    std::ofstream mOutputDebug;
+    std::ofstream mOutputError;
     static MyLog* pInstance;
     void logWriter(const std::string& LogMessage, LogLevel);
 

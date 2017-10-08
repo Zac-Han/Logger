@@ -4,7 +4,6 @@
 
 using namespace std;
 
-const string MyLog::Verbose = "VERBOSE";
 const string MyLog::Info = "INFO";
 const string MyLog::Warning = "WARNING";
 const string MyLog::Error = "ERROR";
@@ -38,11 +37,6 @@ void MyLog::log(const std::string& LogMessage, LogLevel inLogLevel)
     logWriter(LogMessage, inLogLevel);
 }
 
-void MyLog::logVerbose(const std::string& LogMessage)
-{
-    logWriter(LogMessage, LogLevel::LevelVerbose);
-}
-
 void MyLog::logInfo(const std::string& LogMessage)
 {
     logWriter(LogMessage, LogLevel::LevelInfo);
@@ -60,31 +54,38 @@ void MyLog::logError(const std::string& LogMessage)
 
 void MyLog::logWriter(const std::string &LogMessage, LogLevel inLogLevel)
 {
+    time_t t = time(0);
+    char tmp[64];
+    strftime(tmp, sizeof(tmp), "%d-%m-%y %X", localtime(&t));
+
     switch (inLogLevel) {
-    case LogLevel::LevelVerbose:
-        mOutputstream.open(FileDebug, ofstream::app);
-        MyLog::LogText = MyLog::Verbose;
-        break;
     case LogLevel::LevelInfo:
-        mOutputstream.open(FileDebug, ofstream::app);
+        mOutputDebug.open(FileDebug, ofstream::app);
         MyLog::LogText = MyLog::Info;
+
         break;
     case LogLevel::LevelWarning:
-        mOutputstream.open(FileError, ofstream::app);
+        mOutputDebug.open(FileDebug, ofstream::app);
+        mOutputError.open(FileError, ofstream::app);
         MyLog::LogText = MyLog::Warning;
+        mOutputError << "[" << tmp << "]";
+        mOutputError << "[" << MyLog::LogText << "]" << " : " << LogMessage << endl;
+        mOutputError.close();
         break;
     case LogLevel::LevelError:
-        mOutputstream.open(FileError, ofstream::app);
+        mOutputDebug.open(FileDebug, ofstream::app);
+        mOutputError.open(FileError, ofstream::app);
         MyLog::LogText = MyLog::Error;
+        mOutputError << "[" << tmp << "]";
+        mOutputError << "[" << MyLog::LogText << "]" << " : " << LogMessage << endl;
+        mOutputError.close();
         break;
     default:
         break;
     }
 
-    time_t t = time(0);
-    char tmp[64];
-    strftime(tmp, sizeof(tmp), "%d-%m-%y %X", localtime(&t));
-    mOutputstream << "[" << tmp << "]";
-    mOutputstream << "[" << MyLog::LogText << "]" << " : " << LogMessage << endl;
-    mOutputstream.close();
+    mOutputDebug << "[" << tmp << "]";
+    mOutputDebug << "[" << MyLog::LogText << "]" << " : " << LogMessage << endl;
+    mOutputDebug.close();
+
 }
