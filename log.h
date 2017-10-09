@@ -14,13 +14,16 @@ public:
 
     static Log& instance();
 
-    // void logInfo(const char *strFormat);
-
     void logInfo(const char * strFormat, ...);
+    void logWarning(const char * strFormat, ...);
+    void logError(const char * strFormat, ...);
 
 protected:
-    std::ofstream mOutputDebug;
+    static std::ofstream mOutputDebug;
+    static std::ofstream mOutputError;
     static Log* pInstance;
+
+    std::string getTime();
 
 private:
     Log();
