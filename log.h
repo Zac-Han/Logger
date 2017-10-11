@@ -1,5 +1,5 @@
-#ifndef MYLOG_H
-#define MYLOG_H
+#ifndef LOG_H
+#define LOG_H
 #include <iostream>
 #include <fstream>
 #include <cstring>
@@ -49,4 +49,4 @@ private:
 
 };
 
-#endif // MYLOG_H
+#endif // LOG_H
